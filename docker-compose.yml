@@ -1,0 +1,10 @@
+services:
+  logislot:
+    build: .
+    container_name: logislot_app
+    ports:
+      - "7012:7012"
+    volumes:
+      - ./Data:/app/Data
+    stdin_open: true
+    tty: true
