@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "txt",
+    "Direccion": "plaza",
+    "CP": 5,
+    "Activo": true,
+    "FechaAlta": "2026-01-16T17:58:52.8616026+01:00"
+  },
+  {
+    "Id": 2,
+    "Nombre": "cotrali",
+    "Direccion": "malpica",
+    "CP": 50020,
+    "Activo": true,
+    "FechaAlta": "2026-01-16T20:08:49.6413738+01:00"
+  },
+  {
+    "Id": 3,
+    "Nombre": "Carreras",
+    "Direccion": "Argualas",
+    "CP": 50020,
+    "Activo": true,
+    "FechaAlta": "2026-01-16T22:30:48.13466+01:00"
+  },
+  {
+    "Id": 4,
+    "Nombre": "SESE",
+    "Direccion": "malpica",
+    "CP": 20202,
+    "Activo": false,
+    "FechaAlta": "2026-01-17T10:25:13.647601+01:00"
+  },
+  {
+    "Id": 5,
+    "Nombre": "SESE",
+    "Direccion": "malpica",
+    "CP": 20202,
+    "Activo": true,
+    "FechaAlta": "2026-01-17T10:26:38.0627375+01:00"
+  }
+]

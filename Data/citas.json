@@ -1,0 +1,156 @@
+[
+  {
+    "Id": 1,
+    "Fecha": "2026-01-16T00:00:00",
+    "Hora": 7,
+    "AlmacenId": 1,
+    "AlmacenNombre": "txt",
+    "TransportistaId": 2,
+    "TransportistaNombre": "tsb",
+    "Activa": false,
+    "FechaAlta": "2026-01-16T19:07:44.5908772+01:00"
+  },
+  {
+    "Id": 2,
+    "Fecha": "2026-01-17T00:00:00",
+    "Hora": 5,
+    "AlmacenId": 1,
+    "AlmacenNombre": "txt",
+    "TransportistaId": 2,
+    "TransportistaNombre": "tsb",
+    "Activa": false,
+    "FechaAlta": "2026-01-16T19:10:28.2137955+01:00"
+  },
+  {
+    "Id": 3,
+    "Fecha": "2026-02-18T00:00:00",
+    "Hora": 9,
+    "AlmacenId": 1,
+    "AlmacenNombre": "txt",
+    "TransportistaId": 2,
+    "TransportistaNombre": "tsb",
+    "Activa": false,
+    "FechaAlta": "2026-01-16T20:06:13.1149419+01:00"
+  },
+  {
+    "Id": 4,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 8,
+    "AlmacenId": 1,
+    "AlmacenNombre": "txt",
+    "TransportistaId": 2,
+    "TransportistaNombre": "tsb",
+    "Activa": false,
+    "FechaAlta": "2026-01-16T22:27:49.8410745+01:00"
+  },
+  {
+    "Id": 5,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 8,
+    "AlmacenId": 1,
+    "AlmacenNombre": "txt",
+    "TransportistaId": 2,
+    "TransportistaNombre": "tsb",
+    "Activa": true,
+    "FechaAlta": "2026-01-16T22:28:31.1349761+01:00"
+  },
+  {
+    "Id": 6,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 9,
+    "AlmacenId": 1,
+    "AlmacenNombre": "txt",
+    "TransportistaId": 2,
+    "TransportistaNombre": "tsb",
+    "Activa": true,
+    "FechaAlta": "2026-01-16T22:29:00.7988824+01:00"
+  },
+  {
+    "Id": 7,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 20,
+    "AlmacenId": 2,
+    "AlmacenNombre": "cotrali",
+    "TransportistaId": 3,
+    "TransportistaNombre": "Matias",
+    "Activa": false,
+    "FechaAlta": "2026-01-16T22:32:04.7972409+01:00"
+  },
+  {
+    "Id": 8,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 10,
+    "AlmacenId": 2,
+    "AlmacenNombre": "cotrali",
+    "TransportistaId": 3,
+    "TransportistaNombre": "Matias",
+    "Activa": true,
+    "FechaAlta": "2026-01-16T22:32:14.9334402+01:00"
+  },
+  {
+    "Id": 9,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 12,
+    "AlmacenId": 3,
+    "AlmacenNombre": "Carreras",
+    "TransportistaId": 3,
+    "TransportistaNombre": "Matias",
+    "Activa": true,
+    "FechaAlta": "2026-01-16T22:32:47.5329452+01:00"
+  },
+  {
+    "Id": 10,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 11,
+    "AlmacenId": 2,
+    "AlmacenNombre": "cotrali",
+    "TransportistaId": 2,
+    "TransportistaNombre": "tsb",
+    "Activa": true,
+    "FechaAlta": "2026-01-16T23:23:38.7745244+01:00"
+  },
+  {
+    "Id": 11,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 11,
+    "AlmacenId": 3,
+    "AlmacenNombre": "Carreras",
+    "TransportistaId": 4,
+    "TransportistaNombre": "mj",
+    "Activa": true,
+    "FechaAlta": "2026-01-17T10:21:21.6580495+01:00"
+  },
+  {
+    "Id": 12,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 13,
+    "AlmacenId": 3,
+    "AlmacenNombre": "Carreras",
+    "TransportistaId": 4,
+    "TransportistaNombre": "mj",
+    "Activa": false,
+    "FechaAlta": "2026-01-17T10:21:37.1295881+01:00"
+  },
+  {
+    "Id": 13,
+    "Fecha": "2026-02-16T00:00:00",
+    "Hora": 17,
+    "AlmacenId": 3,
+    "AlmacenNombre": "Carreras",
+    "TransportistaId": 4,
+    "TransportistaNombre": "mj",
+    "Activa": false,
+    "FechaAlta": "2026-01-17T10:21:56.2978061+01:00"
+  },
+  {
+    "Id": 14,
+    "Fecha": "2026-01-16T00:00:00",
+    "Hora": 10,
+    "AlmacenId": 1,
+    "AlmacenNombre": "txt",
+    "TransportistaId": 4,
+    "TransportistaNombre": "mj",
+    "Activa": true,
+    "FechaAlta": "2026-01-17T10:22:21.0733166+01:00"
+  }
+]

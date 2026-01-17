@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "juan",
+    "Email": "juan@email.com",
+    "Password": "1234",
+    "EsTrabajador": true,
+    "Activo": true,
+    "FechaAlta": "2026-01-16T17:49:23.8476438+01:00"
+  },
+  {
+    "Id": 2,
+    "Nombre": "tsb",
+    "Email": "tsb@mail.com",
+    "Password": "1234",
+    "EsTrabajador": false,
+    "Activo": true,
+    "FechaAlta": "2026-01-16T20:31:53.4340007+01:00"
+  },
+  {
+    "Id": 3,
+    "Nombre": "Matias",
+    "Email": "mati@mail.com",
+    "Password": "1234",
+    "EsTrabajador": false,
+    "Activo": true,
+    "FechaAlta": "2026-01-16T22:31:43.9980354+01:00"
+  },
+  {
+    "Id": 4,
+    "Nombre": "mj",
+    "Email": "mj@mail.com",
+    "Password": "1234",
+    "EsTrabajador": false,
+    "Activo": false,
+    "FechaAlta": "2026-01-17T10:20:55.7908071+01:00"
+  }
+]
