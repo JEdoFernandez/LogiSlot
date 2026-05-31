@@ -1,0 +1,597 @@
+{
+	"info": {
+		"_postman_id": "c1f71dfb-8a8b-4c59-bfd4-345388c3a9d2",
+		"name": "LogiSlot API RESTful",
+		"description": "# 🚛 LogiSlot API RESTful (AA2)\n\nEsta colección contiene todas las peticiones HTTP documentadas y configuradas para interactuar con la **API RESTful de LogiSlot**.\n\n### 🔐 Autenticación Automática\nLa colección incluye un script en la petición de **Iniciar Sesión (Login)** que guarda automáticamente el token JWT obtenido en la variable `{{token}}` de la colección. Las peticiones privadas están configuradas para usar esta variable de forma transparente.\n\n### ⚙️ Variables Globales\n- `{{baseUrl}}`: Dirección de la API (por defecto: `http://localhost:7012`)\n- `{{token}}`: Token JWT activo (se autocompleta tras el Login)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Autenticación",
+			"description": "Endpoints relacionados con el registro y la autenticación de usuarios.",
+			"item": [
+				{
+					"name": "Registrar Usuario (Transportista)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"description": "Especifica que el formato del cuerpo es JSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"pedro\",\n  \"email\": \"pedro@mail.com\",\n  \"password\": \"1234\",\n  \"esTrabajador\": false\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "### 📝 Registrar Usuario (Transportista)\n\n**Propósito:** Registra un nuevo usuario transportista en la base de datos.\n\n**🔑 Autorización:** Público (Sin token).\n\n**📦 Estructura del Body (JSON):**\n- `nombre` (String): Nombre único de usuario (ej: \"pedro\").\n- `email` (String): Correo electrónico válido.\n- `password` (String): Contraseña (mínimo 4 caracteres).\n- `esTrabajador` (Boolean): Debe ser `false` para registrarse como **Transportista** (Rol: `User`)."
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Usuario (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"description": "Especifica que el formato del cuerpo es JSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"lucia\",\n  \"email\": \"lucia@mail.com\",\n  \"password\": \"1234\",\n  \"esTrabajador\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "### 🛠️ Registrar Usuario (Admin)\n\n**Propósito:** Registra un nuevo usuario con perfil de trabajador/administrador en la base de datos.\n\n**🔑 Autorización:** Público (Sin token).\n\n**📦 Estructura del Body (JSON):**\n- `nombre` (String): Nombre único de usuario (ej: \"lucia\").\n- `email` (String): Correo electrónico válido.\n- `password` (String): Contraseña (mínimo 4 caracteres).\n- `esTrabajador` (Boolean): Debe ser `true` para registrarse como **Trabajador** (Rol: `Admin`)."
+					},
+					"response": []
+				},
+				{
+					"name": "Iniciar Sesión (Login)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Script para guardar automáticamente el token en las variables de la colección",
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.collectionVariables.set(\"token\", jsonData.token);",
+									"    console.log(\"Token JWT guardado automáticamente en variables de la colección.\");",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"description": "Especifica que el formato del cuerpo es JSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"juan\",\n  \"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "### 🔑 Iniciar Sesión (Login)\n\n**Propósito:** Autentica un usuario y devuelve un token JWT.\n\n**🔑 Autorización:** Público (Sin token).\n\n**📦 Estructura del Body (JSON):**\n- `nombre` (String): Nombre de usuario registrado.\n- `password` (String): Contraseña correspondiente.\n\n**💡 Automatización:** Al recibir la respuesta con éxito, un script interno de Postman guardará automáticamente el token en la variable `{{token}}` de la colección, permitiendo probar inmediatamente las rutas privadas."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Almacenes",
+			"description": "Operaciones CRUD y búsqueda avanzada para la entidad de Almacenes.",
+			"item": [
+				{
+					"name": "Listar Almacenes (Público - Con Búsqueda y Filtros)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/almacen?nombre=Zaragoza&cp=50001&sortBy=nombre&isDescending=false",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"almacen"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Zaragoza",
+									"description": "Texto de búsqueda para filtrar almacenes por coincidencia en su Nombre (no usa ID)."
+								},
+								{
+									"key": "cp",
+									"value": "50001",
+									"description": "Número postal exacto para filtrar almacenes en una zona específica (no usa ID)."
+								},
+								{
+									"key": "sortBy",
+									"value": "nombre",
+									"description": "Campo por el que ordenar los resultados: 'nombre', 'cp' o 'fechaalta' (no usa ID)."
+								},
+								{
+									"key": "isDescending",
+									"value": "false",
+									"description": "Establece el sentido de la ordenación: 'true' para descendente, 'false' para ascendente."
+								}
+							]
+						},
+						"description": "### 🔍 Listar Almacenes (Búsqueda Avanzada Pública)\n\n**Propósito:** Recupera todos los almacenes activos aplicando filtros y ordenación por al menos dos campos distintos (Nombre y CP), cumpliendo estrictamente con el requisito de no utilizar la propiedad `Id` para búsquedas.\n\n**🔑 Autorización:** Público (Sin token).\n\n**⚙️ Parámetros de Consulta (Query Params):**\n- `nombre`: Filtro por texto libre en el nombre.\n- `cp`: Filtro exacto por Código Postal.\n- `sortBy`: Ordenar por `nombre`, `cp` o `fechaalta`.\n- `isDescending`: Define si el orden es descendente (`true`) o ascendente (`false`)."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Almacén por ID (Público)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/almacen/:almacenId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"almacen",
+								":almacenId"
+							],
+							"variable": [
+								{
+									"key": "almacenId",
+									"value": "1",
+									"description": "Identificador único numérico (ID) del almacén que deseas consultar."
+								}
+							]
+						},
+						"description": "### 🏢 Obtener Almacén por ID\n\n**Propósito:** Recupera la información detallada de un almacén activo específico por su ID.\n\n**🔑 Autorización:** Público (Sin token).\n\n**📍 Variables de Ruta (Path Variables):**\n- `almacenId`: ID del almacén (introduce el valor en la tabla inferior)."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Almacén (Admin Protegido)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"description": "Especifica que el formato del cuerpo es JSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Almacén Central Zaragoza\",\n  \"direccion\": \"Polígono Plaza, Calle 4\",\n  \"cp\": 50197\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/almacen",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"almacen"
+							]
+						},
+						"description": "### ➕ Crear Almacén\n\n**Propósito:** Añade un nuevo almacén activo al sistema.\n\n**🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true).\n\n**📦 Estructura del Body (JSON):**\n- `nombre` (String): Nombre del almacén.\n- `direccion` (String): Dirección física.\n- `cp` (Integer): Código Postal numérico."
+					},
+					"response": []
+				},
+				{
+					"name": "Desactivar Almacén (Admin Protegido)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/almacen/:almacenId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"almacen",
+								":almacenId"
+							],
+							"variable": [
+								{
+									"key": "almacenId",
+									"value": "1",
+									"description": "Identificador único (ID) del almacén que deseas desactivar mediante borrado lógico."
+								}
+							]
+						},
+						"description": "### ❌ Desactivar Almacén (Soft Delete)\n\n**Propósito:** Realiza una baja lógica desactivando un almacén del sistema (su propiedad 'Activo' pasa a ser false).\n\n**🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true).\n\n**📍 Variables de Ruta (Path Variables):**\n- `almacenId`: ID del almacén a desactivar (introduce el valor en la tabla inferior)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Citas & Slots",
+			"description": "Gestión de asignación de citas, slots virtuales libres/ocupados y búsquedas de citas de transportistas.",
+			"item": [
+				{
+					"name": "Ver Slots Virtuales del Día (Público)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/cita/publica/slots?fecha=2026-06-15&almacenId=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cita",
+								"publica",
+								"slots"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2026-06-15",
+									"description": "Fecha del día que se desea consultar (formato YYYY-MM-DD)."
+								},
+								{
+									"key": "almacenId",
+									"value": "1",
+									"description": "ID del almacén sobre el cual se quieren ver las franjas horarias."
+								}
+							]
+						},
+						"description": "### 🗓️ Ver Slots Virtuales del Día (Pública)\n\n**Propósito:** Devuelve la cuadrilla completa de franjas horarias (de 6:00 a 20:00) para una fecha y almacén determinados, indicando si cada hora está libre (\"FREE\") o el nombre del transportista ocupante.\n\n**🔑 Autorización:** Público (Sin token).\n\n**⚙️ Parámetros de Consulta (Query Params):**\n- `fecha`: Fecha de consulta.\n- `almacenId`: ID del almacén."
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Mis Citas (Zona Privada - Búsqueda Avanzada)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/cita/mis-citas?fecha=2026-06-15&hora=10&sortBy=fecha&isDescending=false",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cita",
+								"mis-citas"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2026-06-15",
+									"description": "Filtrar para obtener únicamente las citas de esta fecha (formato YYYY-MM-DD).",
+									"disabled": true
+								},
+								{
+									"key": "hora",
+									"value": "10",
+									"description": "Filtrar para obtener únicamente las citas que coincidan con esta hora (6 a 20).",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "fecha",
+									"description": "Campo por el que deseas ordenar los resultados: 'fecha' u 'hora' (no usa ID)."
+								},
+								{
+									"key": "isDescending",
+									"value": "false",
+									"description": "Sentido de ordenación: 'true' para descendente, 'false' para ascendente."
+								}
+							]
+						},
+						"description": "### 🔒 Ver Mis Citas (Búsqueda Privada Transportista)\n\n**Propósito:** Zona privada de información del transportista. Permite recuperar exclusivamente las citas del usuario logueado en el sistema, aplicando filtros avanzados y ordenación por dos campos (Fecha y Hora), sin usar el ID del recurso.\n\n**🔑 Autorización:** Privado. Requiere token con rol **User** (Transportista) o **Admin**.\n\n**⚙️ Parámetros de Consulta (Query Params):**\n- `fecha`: Filtro por fecha exacta.\n- `hora`: Filtro por hora exacta (ej: 10).\n- `sortBy`: Ordenación por `fecha` u `hora`.\n- `isDescending`: Define si el orden es descendente (`true`) o ascendente (`false`)."
+					},
+					"response": []
+				},
+				{
+					"name": "Reservar Cita (Transportista Protegido)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"description": "Especifica que el formato del cuerpo es JSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fecha\": \"2026-06-15T00:00:00Z\",\n  \"hora\": 10,\n  \"almacenId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/cita",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cita"
+							]
+						},
+						"description": "### 🗓️ Reservar Cita\n\n**Propósito:** Reserva un slot horario en un almacén para el transportista autenticado. El sistema valida automáticamente que el slot no esté ocupado previamente por otra cita activa.\n\n**🔑 Autorización:** Privado. Requiere token con rol **User** o **Admin**.\n\n**📦 Estructura del Body (JSON):**\n- `fecha` (DateTime): Fecha de la cita.\n- `hora` (Integer): Hora en rango de `6` a `20`.\n- `almacenId` (Integer): ID del almacén elegido."
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar Cita (Protegido Propietario/Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/cita/:citaId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cita",
+								":citaId"
+							],
+							"variable": [
+								{
+									"key": "citaId",
+									"value": "1",
+									"description": "Identificador único (ID) de la cita activa que deseas cancelar."
+								}
+							]
+						},
+						"description": "### ❌ Cancelar Cita\n\n**Propósito:** Cancela una cita activa (baja lógica). \n\n**🔑 Autorización:** Privado. Requiere token.\n- Si eres **User (Transportista)**: El sistema verifica que la cita te pertenezca (eres su creador). Si es de otro, retornará 403 Forbidden.\n- Si eres **Admin**: Puedes cancelar libremente cualquier cita del sistema.\n\n**📍 Variables de Ruta (Path Variables):**\n- `citaId`: ID de la cita a cancelar (introduce el valor en la tabla inferior)."
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Todas las Citas (Admin Protegido)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/cita/todas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cita",
+								"todas"
+							]
+						},
+						"description": "### 📋 Ver Todas las Citas (Admin)\n\n**Propósito:** Lista de forma global todas las citas activas en el sistema sin importar a qué transportista pertenezcan.\n\n**🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Usuarios",
+			"description": "Endpoints para auditar, consultar y deshabilitar usuarios del sistema.",
+			"item": [
+				{
+					"name": "Listar Todos los Usuarios (Público)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuario",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"usuario"
+							]
+						},
+						"description": "### 👥 Listar Todos los Usuarios (Público)\n\n**Propósito:** Endpoint de libre acceso público añadido expresamente para auditar cómodamente la base de datos de usuarios activos registrados. Oculta contraseñas por motivos de privacidad.\n\n**🔑 Autorización:** Público (Sin token)."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Transportistas Activos (Admin Protegido)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuario/transportistas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"transportistas"
+							]
+						},
+						"description": "### 🚛 Listar Transportistas Activos\n\n**Propósito:** Obtiene un listado de todos los usuarios registrados con perfil de transportista (EsTrabajador = false) y estado activo.\n\n**🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true)."
+					},
+					"response": []
+				},
+				{
+					"name": "Desactivar Usuario (Admin Protegido)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/usuario/:usuarioId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								":usuarioId"
+							],
+							"variable": [
+								{
+									"key": "usuarioId",
+									"value": "2",
+									"description": "Identificador único (ID) del usuario que se desea dar de baja de forma lógica."
+								}
+							]
+						},
+						"description": "### ❌ Desactivar Usuario (Soft Delete)\n\n**Propósito:** Realiza una baja lógica de un usuario inhabilitando su cuenta (la propiedad 'Activo' pasa a ser false).\n\n**🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true).\n\n**📍 Variables de Ruta (Path Variables):**\n- `usuarioId`: ID del usuario a desactivar (introduce el valor en la tabla inferior)."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:7012",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
