@@ -1,10 +1,36 @@
 services:
+  logislot_db:
+    image: postgres:15
+    container_name: logislot_db
+    environment:
+      POSTGRES_DB: logislot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "2107:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d logislot"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   logislot:
     build: .
     container_name: logislot_app
     ports:
       - "7012:7012"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=logislot_db;Database=logislot;Username=postgres;Password=postgrespassword
+      - Jwt__Key=LogiSlotSuperSecretSecurityKey2026!!!
+      - Jwt__Issuer=LogiSlotAPI
+      - Jwt__Audience=LogiSlotClient
     volumes:
       - ./Data:/app/Data
-    stdin_open: true
-    tty: true
+    depends_on:
+      logislot_db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

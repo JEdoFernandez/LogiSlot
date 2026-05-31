@@ -38,5 +38,13 @@
     "CP": 20202,
     "Activo": true,
     "FechaAlta": "2026-01-17T10:26:38.0627375+01:00"
+  },
+  {
+    "Id": 6,
+    "Nombre": "san valero",
+    "Direccion": "actur",
+    "CP": 50015,
+    "Activo": true,
+    "FechaAlta": "2026-01-21T19:24:59.5716937+01:00"
   }
 ]

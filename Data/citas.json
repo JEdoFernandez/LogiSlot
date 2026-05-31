@@ -51,7 +51,7 @@
     "AlmacenNombre": "txt",
     "TransportistaId": 2,
     "TransportistaNombre": "tsb",
-    "Activa": true,
+    "Activa": false,
     "FechaAlta": "2026-01-16T22:28:31.1349761+01:00"
   },
   {
@@ -152,5 +152,27 @@
     "TransportistaNombre": "mj",
     "Activa": true,
     "FechaAlta": "2026-01-17T10:22:21.0733166+01:00"
+  },
+  {
+    "Id": 15,
+    "Fecha": "2026-01-21T00:00:00",
+    "Hora": 20,
+    "AlmacenId": 6,
+    "AlmacenNombre": "san valero",
+    "TransportistaId": 3,
+    "TransportistaNombre": "Matias",
+    "Activa": true,
+    "FechaAlta": "2026-01-21T19:27:18.5319392+01:00"
+  },
+  {
+    "Id": 16,
+    "Fecha": "2026-01-21T00:00:00",
+    "Hora": 19,
+    "AlmacenId": 6,
+    "AlmacenNombre": "san valero",
+    "TransportistaId": 3,
+    "TransportistaNombre": "Matias",
+    "Activa": false,
+    "FechaAlta": "2026-01-21T19:27:47.7137108+01:00"
   }
 ]

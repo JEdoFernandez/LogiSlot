@@ -34,5 +34,14 @@
     "EsTrabajador": false,
     "Activo": false,
     "FechaAlta": "2026-01-17T10:20:55.7908071+01:00"
+  },
+  {
+    "Id": 5,
+    "Nombre": "alejandro",
+    "Email": "alejandro@mail.com",
+    "Password": "1234",
+    "EsTrabajador": true,
+    "Activo": true,
+    "FechaAlta": "2026-01-21T19:23:44.7009759+01:00"
   }
 ]
