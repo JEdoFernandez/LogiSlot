@@ -143,22 +143,22 @@
 								{
 									"key": "nombre",
 									"value": "Zaragoza",
-									"description": "Texto de búsqueda para filtrar almacenes por coincidencia en su Nombre (no usa ID)."
+									"description": "Columna VALOR: Escribe el nombre o texto para buscar almacenes. Ej: Zaragoza"
 								},
 								{
 									"key": "cp",
 									"value": "50001",
-									"description": "Número postal exacto para filtrar almacenes en una zona específica (no usa ID)."
+									"description": "Columna VALOR: Escribe el Código Postal exacto de 5 dígitos para filtrar. Ej: 50001"
 								},
 								{
 									"key": "sortBy",
 									"value": "nombre",
-									"description": "Campo por el que ordenar los resultados: 'nombre', 'cp' o 'fechaalta' (no usa ID)."
+									"description": "Columna VALOR: Escribe el campo por el que deseas ordenar: 'nombre', 'cp' o 'fechaalta'"
 								},
 								{
 									"key": "isDescending",
 									"value": "false",
-									"description": "Establece el sentido de la ordenación: 'true' para descendente, 'false' para ascendente."
+									"description": "Columna VALOR: Escribe 'true' para orden descendente o 'false' para orden ascendente"
 								}
 							]
 						},
@@ -185,7 +185,7 @@
 								{
 									"key": "almacenId",
 									"value": "1",
-									"description": "Identificador único numérico (ID) del almacén que deseas consultar."
+									"description": "Columna VALOR: Introduce el ID numérico del almacén que quieres consultar en detalle. Ej: 1"
 								}
 							]
 						},
@@ -261,7 +261,7 @@
 								{
 									"key": "almacenId",
 									"value": "1",
-									"description": "Identificador único (ID) del almacén que deseas desactivar mediante borrado lógico."
+									"description": "Columna VALOR: Escribe el ID numérico del almacén que deseas desactivar (baja lógica). Ej: 1"
 								}
 							]
 						},
@@ -295,12 +295,12 @@
 								{
 									"key": "fecha",
 									"value": "2026-06-15",
-									"description": "Fecha del día que se desea consultar (formato YYYY-MM-DD)."
+									"description": "Columna VALOR: Escribe la fecha de consulta en formato AÑO-MES-DÍA (YYYY-MM-DD). Ej: 2026-06-15"
 								},
 								{
 									"key": "almacenId",
 									"value": "1",
-									"description": "ID del almacén sobre el cual se quieren ver las franjas horarias."
+									"description": "Columna VALOR: Escribe el ID del almacén que deseas comprobar. Ej: 1"
 								}
 							]
 						},
@@ -337,24 +337,24 @@
 								{
 									"key": "fecha",
 									"value": "2026-06-15",
-									"description": "Filtrar para obtener únicamente las citas de esta fecha (formato YYYY-MM-DD).",
+									"description": "Columna VALOR: (Filtro opcional) Actívalo para filtrar solo las citas de este día en formato YYYY-MM-DD.",
 									"disabled": true
 								},
 								{
 									"key": "hora",
 									"value": "10",
-									"description": "Filtrar para obtener únicamente las citas que coincidan con esta hora (6 a 20).",
+									"description": "Columna VALOR: (Filtro opcional) Actívalo para filtrar solo las citas de esta hora exacta (6 a 20).",
 									"disabled": true
 								},
 								{
 									"key": "sortBy",
 									"value": "fecha",
-									"description": "Campo por el que deseas ordenar los resultados: 'fecha' u 'hora' (no usa ID)."
+									"description": "Columna VALOR: Escribe el campo por el que deseas ordenar las citas: 'fecha' u 'hora'"
 								},
 								{
 									"key": "isDescending",
 									"value": "false",
-									"description": "Sentido de ordenación: 'true' para descendente, 'false' para ascendente."
+									"description": "Columna VALOR: Escribe 'true' para ordenar de más reciente a antigua, o 'false' para ascendente."
 								}
 							]
 						},
@@ -430,7 +430,7 @@
 								{
 									"key": "citaId",
 									"value": "1",
-									"description": "Identificador único (ID) de la cita activa que deseas cancelar."
+									"description": "Columna VALOR: Escribe el ID numérico de la cita activa que deseas cancelar. Ej: 1"
 								}
 							]
 						},
@@ -551,7 +551,7 @@
 								{
 									"key": "usuarioId",
 									"value": "2",
-									"description": "Identificador único (ID) del usuario que se desea dar de baja de forma lógica."
+									"description": "Columna VALOR: Escribe el ID numérico del usuario que deseas desactivar de forma lógica. Ej: 2"
 								}
 							]
 						},
