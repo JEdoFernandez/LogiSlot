@@ -1,0 +1,24 @@
+$kind: http-request
+name: Cancelar Cita (Protegido Propietario/Admin)
+description: |-
+  ### ❌ Cancelar Cita
+
+  **Propósito:** Cancela una cita activa (baja lógica). 
+
+  **🔑 Autorización:** Privado. Requiere token.
+  - Si eres **User (Transportista)**: El sistema verifica que la cita te pertenezca (eres su creador). Si es de otro, retornará 403 Forbidden.
+  - Si eres **Admin**: Puedes cancelar libremente cualquier cita del sistema.
+
+  **📍 Variables de Ruta (Path Variables):**
+  - `citaId`: ID de la cita a cancelar (introduce el valor en la tabla inferior).
+url: "{{baseUrl}}/api/cita/:citaId"
+method: DELETE
+pathVariables:
+  - key: citaId
+    value: "1"
+    description: Identificador único (ID) de la cita activa que deseas cancelar.
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 4000

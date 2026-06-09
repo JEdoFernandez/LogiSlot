@@ -1,5 +1,7 @@
 namespace LogiSlot.Models;
 
+// Clase que representa el modelo de una Cita en la base de datos.
+// Contiene la información de la reserva: fecha, hora, qué almacén se reserva y quién lo reserva (transportista).
 public class Cita
 {
     public int Id { get; set; }

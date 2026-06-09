@@ -1,0 +1,14 @@
+$kind: http-request
+description: |-
+  ### 📋 Ver Todas las Citas (Admin)
+
+  **Propósito:** Lista de forma global todas las citas activas en el sistema sin importar a qué transportista pertenezcan.
+
+  **🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true).
+url: "{{baseUrl}}/api/cita/todas"
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 5000

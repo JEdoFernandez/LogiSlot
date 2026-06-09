@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LogiSlot.Controllers
 {
+    // Controlador principal para gestionar las operaciones relacionadas con las citas (reservas de almacén).
+    // Contiene los "endpoints" o rutas de nuestra API para crear, ver y cancelar citas.
     [ApiController]
     [Route("api/[controller]")]
     public class CitaController : ControllerBase

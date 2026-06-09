@@ -1,0 +1,29 @@
+$kind: http-request
+description: |-
+  ### 🔍 Listar Almacenes (Búsqueda Avanzada Pública)
+
+  **Propósito:** Recupera todos los almacenes activos aplicando filtros y ordenación por al menos dos campos distintos (Nombre y CP), cumpliendo estrictamente con el requisito de no utilizar la propiedad `Id` para búsquedas.
+
+  **🔑 Autorización:** Público (Sin token).
+
+  **⚙️ Parámetros de Consulta (Query Params):**
+  - `nombre`: Filtro por texto libre en el nombre.
+  - `cp`: Filtro exacto por Código Postal.
+  - `sortBy`: Ordenar por `nombre`, `cp` o `fechaalta`.
+  - `isDescending`: Define si el orden es descendente (`true`) o ascendente (`false`).
+url: "{{baseUrl}}/api/almacen?nombre=Zaragoza&cp=50001&sortBy=nombre&isDescending=false"
+method: GET
+queryParams:
+  - key: nombre
+    value: Zaragoza
+    description: Texto de búsqueda para filtrar almacenes por coincidencia en su Nombre (no usa ID).
+  - key: cp
+    value: "50001"
+    description: Número postal exacto para filtrar almacenes en una zona específica (no usa ID).
+  - key: sortBy
+    value: nombre
+    description: "Campo por el que ordenar los resultados: 'nombre', 'cp' o 'fechaalta' (no usa ID)."
+  - key: isDescending
+    value: "false"
+    description: "Establece el sentido de la ordenación: 'true' para descendente, 'false' para ascendente."
+order: 1000

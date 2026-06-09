@@ -1,0 +1,3 @@
+$kind: collection
+description: Operaciones CRUD y búsqueda avanzada para la entidad de Almacenes.
+order: 2000

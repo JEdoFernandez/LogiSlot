@@ -1,0 +1,21 @@
+$kind: http-request
+description: |-
+  ### ❌ Desactivar Almacén (Soft Delete)
+
+  **Propósito:** Realiza una baja lógica desactivando un almacén del sistema (su propiedad 'Activo' pasa a ser false).
+
+  **🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true).
+
+  **📍 Variables de Ruta (Path Variables):**
+  - `almacenId`: ID del almacén a desactivar (introduce el valor en la tabla inferior).
+url: "{{baseUrl}}/api/almacen/:almacenId"
+method: DELETE
+pathVariables:
+  - key: almacenId
+    value: "1"
+    description: Identificador único (ID) del almacén que deseas desactivar mediante borrado lógico.
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 4000

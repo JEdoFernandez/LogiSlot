@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: b39edada-280b-497f-886f-111e6ff820e1
+
+localResources:
+  collections:
+    - ..\LogiSlot.postman_collection.json
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ..\postman\collections\LogiSlot API RESTful: a86a6c8e-7881-4111-bb43-42264780f387

@@ -1,0 +1,21 @@
+$kind: http-request
+description: |-
+  ### ❌ Desactivar Usuario (Soft Delete)
+
+  **Propósito:** Realiza una baja lógica de un usuario inhabilitando su cuenta (la propiedad 'Activo' pasa a ser false).
+
+  **🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true).
+
+  **📍 Variables de Ruta (Path Variables):**
+  - `usuarioId`: ID del usuario a desactivar (introduce el valor en la tabla inferior).
+url: "{{baseUrl}}/api/usuario/:usuarioId"
+method: DELETE
+pathVariables:
+  - key: usuarioId
+    value: "2"
+    description: Identificador único (ID) del usuario que se desea dar de baja de forma lógica.
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 3000

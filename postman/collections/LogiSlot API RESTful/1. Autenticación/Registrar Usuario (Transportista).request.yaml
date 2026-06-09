@@ -1,0 +1,29 @@
+$kind: http-request
+description: |-
+  ### 📝 Registrar Usuario (Transportista)
+
+  **Propósito:** Registra un nuevo usuario transportista en la base de datos.
+
+  **🔑 Autorización:** Público (Sin token).
+
+  **📦 Estructura del Body (JSON):**
+  - `nombre` (String): Nombre único de usuario (ej: "pedro").
+  - `email` (String): Correo electrónico válido.
+  - `password` (String): Contraseña (mínimo 4 caracteres).
+  - `esTrabajador` (Boolean): Debe ser `false` para registrarse como **Transportista** (Rol: `User`).
+url: "{{baseUrl}}/api/auth/register"
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+    description: Especifica que el formato del cuerpo es JSON
+body:
+  type: text
+  content: |-
+    {
+      "nombre": "pedro",
+      "email": "pedro@mail.com",
+      "password": "1234",
+      "esTrabajador": false
+    }
+order: 1000

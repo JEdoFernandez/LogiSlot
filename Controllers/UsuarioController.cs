@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LogiSlot.Controllers
 {
+    // Controlador para administrar a los usuarios del sistema.
+    // Solo accesible de forma general por administradores (excepto endpoints marcados con [AllowAnonymous]).
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = "Admin")]

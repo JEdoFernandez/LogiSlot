@@ -1,0 +1,21 @@
+$kind: http-request
+description: |-
+  ### 🗓️ Ver Slots Virtuales del Día (Pública)
+
+  **Propósito:** Devuelve la cuadrilla completa de franjas horarias (de 6:00 a 20:00) para una fecha y almacén determinados, indicando si cada hora está libre ("FREE") o el nombre del transportista ocupante.
+
+  **🔑 Autorización:** Público (Sin token).
+
+  **⚙️ Parámetros de Consulta (Query Params):**
+  - `fecha`: Fecha de consulta.
+  - `almacenId`: ID del almacén.
+url: "{{baseUrl}}/api/cita/publica/slots?fecha=2026-06-15&almacenId=1"
+method: GET
+queryParams:
+  - key: fecha
+    value: 2026-06-15
+    description: Fecha del día que se desea consultar (formato YYYY-MM-DD).
+  - key: almacenId
+    value: "1"
+    description: ID del almacén sobre el cual se quieren ver las franjas horarias.
+order: 1000

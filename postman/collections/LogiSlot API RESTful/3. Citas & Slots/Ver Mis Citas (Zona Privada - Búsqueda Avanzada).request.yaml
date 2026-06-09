@@ -1,0 +1,35 @@
+$kind: http-request
+description: |-
+  ### 🔒 Ver Mis Citas (Búsqueda Privada Transportista)
+
+  **Propósito:** Zona privada de información del transportista. Permite recuperar exclusivamente las citas del usuario logueado en el sistema, aplicando filtros avanzados y ordenación por dos campos (Fecha y Hora), sin usar el ID del recurso.
+
+  **🔑 Autorización:** Privado. Requiere token con rol **User** (Transportista) o **Admin**.
+
+  **⚙️ Parámetros de Consulta (Query Params):**
+  - `fecha`: Filtro por fecha exacta.
+  - `hora`: Filtro por hora exacta (ej: 10).
+  - `sortBy`: Ordenación por `fecha` u `hora`.
+  - `isDescending`: Define si el orden es descendente (`true`) o ascendente (`false`).
+url: "{{baseUrl}}/api/cita/mis-citas?sortBy=fecha&isDescending=false"
+method: GET
+queryParams:
+  - key: fecha
+    value: 2026-06-15
+    disabled: true
+    description: Filtrar para obtener únicamente las citas de esta fecha (formato YYYY-MM-DD).
+  - key: hora
+    value: "10"
+    disabled: true
+    description: Filtrar para obtener únicamente las citas que coincidan con esta hora (6 a 20).
+  - key: sortBy
+    value: fecha
+    description: "Campo por el que deseas ordenar los resultados: 'fecha' u 'hora' (no usa ID)."
+  - key: isDescending
+    value: "false"
+    description: "Sentido de ordenación: 'true' para descendente, 'false' para ascendente."
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 2000

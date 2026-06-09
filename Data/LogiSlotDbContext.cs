@@ -3,6 +3,8 @@ using LogiSlot.Models;
 
 namespace LogiSlot.Data
 {
+    // Esta clase controla de Entity Framework Core (nuestro ORM).
+    // Se encarga de conectar nuestras clases (Modelos) con las tablas de la base de datos PostgreSQL.
     public class LogiSlotDbContext : DbContext
     {
         public LogiSlotDbContext(DbContextOptions<LogiSlotDbContext> options) : base(options)
@@ -17,7 +19,7 @@ namespace LogiSlot.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure relationships
+            // Configura relaciones
             modelBuilder.Entity<Cita>()
                 .HasOne<Usuario>()
                 .WithMany()

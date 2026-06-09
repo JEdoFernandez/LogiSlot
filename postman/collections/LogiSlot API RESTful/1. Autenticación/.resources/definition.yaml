@@ -1,0 +1,3 @@
+$kind: collection
+description: Endpoints relacionados con el registro y la autenticación de usuarios.
+order: 1000

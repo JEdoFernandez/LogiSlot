@@ -13,6 +13,8 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LogiSlot.Controllers
 {
+    // Controlador encargado de la seguridad (Autenticación).
+    // Gestiona el registro de nuevos usuarios y el inicio de sesión para generar el Token JWT.
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase

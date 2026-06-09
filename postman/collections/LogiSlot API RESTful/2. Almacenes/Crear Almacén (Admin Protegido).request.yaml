@@ -1,0 +1,31 @@
+$kind: http-request
+description: |-
+  ### ➕ Crear Almacén
+
+  **Propósito:** Añade un nuevo almacén activo al sistema.
+
+  **🔑 Autorización:** Privado. Requiere token con rol **Admin** (EsTrabajador = true).
+
+  **📦 Estructura del Body (JSON):**
+  - `nombre` (String): Nombre del almacén.
+  - `direccion` (String): Dirección física.
+  - `cp` (Integer): Código Postal numérico.
+url: "{{baseUrl}}/api/almacen"
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+    description: Especifica que el formato del cuerpo es JSON
+body:
+  type: text
+  content: |-
+    {
+      "nombre": "Almacén Central Zaragoza",
+      "direccion": "Polígono Plaza, Calle 4",
+      "cp": 50197
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 3000

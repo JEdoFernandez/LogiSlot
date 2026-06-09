@@ -1,5 +1,7 @@
 namespace LogiSlot.Models;
 
+// Clase que representa a un Usuario del sistema.
+// 'EsTrabajador' define si es un administrador del almacén (true) o un transportista (false).
 public class Usuario
 {
     public int Id { get; set; }

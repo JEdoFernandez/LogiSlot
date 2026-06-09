@@ -1,0 +1,29 @@
+$kind: http-request
+description: |-
+  ### 🛠️ Registrar Usuario (Admin)
+
+  **Propósito:** Registra un nuevo usuario con perfil de trabajador/administrador en la base de datos.
+
+  **🔑 Autorización:** Público (Sin token).
+
+  **📦 Estructura del Body (JSON):**
+  - `nombre` (String): Nombre único de usuario (ej: "lucia").
+  - `email` (String): Correo electrónico válido.
+  - `password` (String): Contraseña (mínimo 4 caracteres).
+  - `esTrabajador` (Boolean): Debe ser `true` para registrarse como **Trabajador** (Rol: `Admin`).
+url: "{{baseUrl}}/api/auth/register"
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+    description: Especifica que el formato del cuerpo es JSON
+body:
+  type: text
+  content: |-
+    {
+      "nombre": "lucia",
+      "email": "lucia@mail.com",
+      "password": "1234",
+      "esTrabajador": true
+    }
+order: 2000

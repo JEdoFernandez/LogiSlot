@@ -1,0 +1,10 @@
+$kind: http-request
+description: |-
+  ### 👥 Listar Todos los Usuarios (Público)
+
+  **Propósito:** Endpoint de libre acceso público añadido expresamente para auditar cómodamente la base de datos de usuarios activos registrados. Oculta contraseñas por motivos de privacidad.
+
+  **🔑 Autorización:** Público (Sin token).
+url: "{{baseUrl}}/api/usuario"
+method: GET
+order: 1000

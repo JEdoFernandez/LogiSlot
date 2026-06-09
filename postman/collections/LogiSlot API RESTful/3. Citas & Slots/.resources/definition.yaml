@@ -1,0 +1,3 @@
+$kind: collection
+description: Gestión de asignación de citas, slots virtuales libres/ocupados y búsquedas de citas de transportistas.
+order: 3000

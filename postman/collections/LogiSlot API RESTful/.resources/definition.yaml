@@ -1,0 +1,15 @@
+$kind: collection
+description: |-
+  # 🚛 LogiSlot API RESTful (AA2)
+
+  Esta colección contiene todas las peticiones HTTP documentadas y configuradas para interactuar con la **API RESTful de LogiSlot**.
+
+  ### 🔐 Autenticación Automática
+  La colección incluye un script en la petición de **Iniciar Sesión (Login)** que guarda automáticamente el token JWT obtenido en la variable `{{token}}` de la colección. Las peticiones privadas están configuradas para usar esta variable de forma transparente.
+
+  ### ⚙️ Variables Globales
+  - `{{baseUrl}}`: Dirección de la API (por defecto: `http://localhost:7012`)
+  - `{{token}}`: Token JWT activo (se autocompleta tras el Login)
+variables:
+  baseUrl: http://localhost:7012
+  token: ""

@@ -1,0 +1,17 @@
+$kind: http-request
+description: |-
+  ### 🏢 Obtener Almacén por ID
+
+  **Propósito:** Recupera la información detallada de un almacén activo específico por su ID.
+
+  **🔑 Autorización:** Público (Sin token).
+
+  **📍 Variables de Ruta (Path Variables):**
+  - `almacenId`: ID del almacén (introduce el valor en la tabla inferior).
+url: "{{baseUrl}}/api/almacen/:almacenId"
+method: GET
+pathVariables:
+  - key: almacenId
+    value: "1"
+    description: Identificador único numérico (ID) del almacén que deseas consultar.
+order: 2000

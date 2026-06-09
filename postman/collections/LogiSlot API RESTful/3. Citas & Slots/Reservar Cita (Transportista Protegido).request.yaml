@@ -1,0 +1,31 @@
+$kind: http-request
+description: |-
+  ### 🗓️ Reservar Cita
+
+  **Propósito:** Reserva un slot horario en un almacén para el transportista autenticado. El sistema valida automáticamente que el slot no esté ocupado previamente por otra cita activa.
+
+  **🔑 Autorización:** Privado. Requiere token con rol **User** o **Admin**.
+
+  **📦 Estructura del Body (JSON):**
+  - `fecha` (DateTime): Fecha de la cita.
+  - `hora` (Integer): Hora en rango de `6` a `20`.
+  - `almacenId` (Integer): ID del almacén elegido.
+url: "{{baseUrl}}/api/cita"
+method: POST
+headers:
+  - key: Content-Type
+    value: application/json
+    description: Especifica que el formato del cuerpo es JSON
+body:
+  type: text
+  content: |-
+    {
+      "fecha": "2026-06-15T00:00:00Z",
+      "hora": 10,
+      "almacenId": 1
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 3000
